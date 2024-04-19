@@ -86,7 +86,7 @@ def main():
 
     df = pd.read_csv(dataset_file)
     
-    df = test()
+    # df = test()
     
     headers = list(df.columns)
     print("header length",len(headers), headers)
@@ -116,8 +116,12 @@ def main():
 
     rules =calculate_conf(res_idxs, conf)
 
-    for key in rules.keys():
-        print(f'{[headers[i] for i in key[:-1]]} => {headers[key[-1]]} : {rules[key]}')
+    ordered_rules =list(rules.items())
+    ordered_rules  = sorted(ordered_rules, key=lambda x:x[1], reverse=True)
+    # print("=====",ordered_rules)
+
+    for key in ordered_rules:
+        print(f'{[headers[i] for i in key[0][:-1]]} => {headers[key[0][-1]]} : {key[1]}')
     print(len(rules))
             
     
