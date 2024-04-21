@@ -20,20 +20,22 @@ def get_basket(data):
     temp = data.values.tolist()
     basket = []
     for idxs in temp:
-        basket.append([idx for idx,t in enumerate(idxs) if t])
+        basket.append([idx for idx, t in enumerate(idxs) if t])
     return basket
 
 '''Generate testing data according to the project example to dummy df format. <For testing only.>'''
 def test():
     data = [
-        ['pen', 'ink', 'diary', 'soap'],
-        ['pen', 'ink', 'diary'],
-        ['pen', 'diary'],
-        ['pen', 'ink', 'soap']
+        ["pen", "ink", "diary", "soap"],
+        ["pen", "ink", "diary"],
+        ["pen", "diary"],
+        ["pen", "ink", "soap"],
     ]
     df = pd.DataFrame(data)
+
     def expand_row(row):
         return pd.Series({item: True for item in row if pd.notna(item)})
+
     one_hot_encoded_df = df.apply(expand_row, axis=1).fillna(False)
     # print(one_hot_encoded_df)
     
@@ -104,6 +106,11 @@ def main():
             
     
 
+    print(f" \n\n==High-confidence association rules (min_conf={conf*100}%)")
+    for key in ordered_rules:
+        print(
+            f"{print_list([headers[i] for i in key[0][:-1]])} => [{headers[key[0][-1]]}]  (Conf:{key[1][0]*100}%, Supp:{key[1][1]*100}%)"
+        )
 
 
 if __name__ == "__main__":
