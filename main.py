@@ -103,14 +103,6 @@ def main():
             s+= headers[i] + ","
         print(f'[{s[:-1]}] => [{headers[key[0][-1]]}] :  (Conf: {key[1][0]*100:.2f}%, Supp: {key[1][1]*100:.2f}%)')
     print("Total number of associate rules: ", len(rules))
-            
-    
-
-    print(f" \n\n==High-confidence association rules (min_conf={conf*100}%)")
-    for key in ordered_rules:
-        print(
-            f"{print_list([headers[i] for i in key[0][:-1]])} => [{headers[key[0][-1]]}]  (Conf:{key[1][0]*100}%, Supp:{key[1][1]*100}%)"
-        )
 
 
 if __name__ == "__main__":
