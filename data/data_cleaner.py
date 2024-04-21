@@ -1,22 +1,15 @@
 import pandas as pd
-
-
-#
-# require_columns = [
-#     "ARREST_DATE","OFNS_DESC",
-#     "LAW_CAT_CD","ARREST_BORO","AGE_GROUP","PERP_SEX", "PERP_RACE"
-# ]
-
-
+'''This Python script is designed to clean data downloaded from the NYC Open Data portal. 
+The cleaning process is outlined as follows:
+1. Column Evaluation: We assess the columns in the original dataset and retain those that are relevant to our analysis.
+2. Null Value Filtering and Date Simplification: We filter out any rows containing null values across all columns. Additionally, dates in the format of mm/dd/yyyy are simplified to retain only the month (mm).
+3. Conversion to Dummy Values: The data is then transformed into dummy variables for further analysis.
+'''
 
 require_columns = [
     "ARREST_DATE","OFNS_DESC",
     "LAW_CAT_CD","ARREST_BORO","AGE_GROUP","PERP_SEX", "PERP_RACE"
 ]
-
-
-
-
 
 
 
